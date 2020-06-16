@@ -6,7 +6,7 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: zhulik/setup-kinesis@v0.2-alpha
+      - uses: zhulik/setup-kinesis@v1.0.0
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: '2.7'
