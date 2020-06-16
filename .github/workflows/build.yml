@@ -6,6 +6,14 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: zhulik/setup-kinesis@v0.1-alpha
+      - uses: zhulik/setup-kinesis@v0.2-alpha
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '2.7'
+      - name: Install dependencies
+        run: gem install aws-sdk-kinesis
       - name: Test
-        run: echo "It works!"
+        env:
+          AWS_ACCESS_KEY_ID: test
+          AWS_SECRET_ACCESS_KEY: test
+        run: ./test.rb
