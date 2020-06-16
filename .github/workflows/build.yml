@@ -6,6 +6,6 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-      - uses: zhulik/redis-setup@v0.1-alpha
+      - uses: zhulik/setup-kinesis@v0.1-alpha
       - name: Test
         run: echo "It works!"
