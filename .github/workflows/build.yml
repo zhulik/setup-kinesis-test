@@ -4,9 +4,13 @@ on: push
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    strategy:
+      matrix:
+        port: [4567, 5678, 6789]
     steps:
       - uses: zhulik/setup-kinesis@v1.0.0
+        with:
+          port: ${{ matrix.port }}
       - uses: actions/setup-ruby@v1
         with:
           ruby-version: '2.7'
@@ -17,4 +21,4 @@ jobs:
         env:
           AWS_ACCESS_KEY_ID: test
           AWS_SECRET_ACCESS_KEY: test
-        run: ./test.rb
+        run: ./test.rb ${{ matrix.port }}
