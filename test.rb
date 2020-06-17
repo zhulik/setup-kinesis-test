@@ -3,6 +3,8 @@
 
 require 'aws-sdk-kinesis'
 
+port = ARGV[0]
+
 client = Aws::Kinesis::Client.new(region: 'local', endpoint: "http://localhost:#{port}")
 
 client.create_stream(
